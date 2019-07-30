@@ -1679,6 +1679,7 @@ Source: www.coli.uni-saarland.de/~slemaguer/emacs/main.html
 **** flycheck
 #+BEGIN_SRC emacs-lisp
   (add-hook 'shell-mode-hook 'flycheck-mode)
+  (add-hook 'sh-mode-hook 'flycheck-mode)
 #+END_SRC
 
 **** company
