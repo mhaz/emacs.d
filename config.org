@@ -674,10 +674,12 @@ https://orgmode.org/worg/exporters/beamer/ox-beamer.html
 Source: https://cestlaz.github.io/posts/using-emacs-11-reveal/
 #+BEGIN_SRC emacs-lisp
   (use-package ox-reveal
-    :ensure t)
-  (load-library "ox-reveal")
-  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
-  (setq org-reveal-mathjax t)
+      :ensure t
+      :config
+      (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+      (setq org-reveal-mathjax t)
+      )
+  (add-hook 'org-mode-hook (lambda () (load-library "ox-reveal")))
 #+END_SRC
 
 * Interface
