@@ -1305,24 +1305,24 @@ https://gist.github.com/nilsdeppe/7645c096d93b005458d97d6874a91ea9
 **** C-make
 Source: https://gist.github.com/nilsdeppe/7645c096d93b005458d97d6874a91ea9
 #+BEGIN_SRC emacs-lisp
-(use-package cmake-mode
-  :ensure t
-  :mode ("CMakeLists.txt" ".cmake")
-  :hook (cmake-mode . (lambda ()
-                        (add-to-list 'company-backends 'company-cmake)))
-  :config
-  (use-package cmake-font-lock
+  (use-package cmake-mode
     :ensure t
-    :defer t
-    :commands (cmake-font-lock-activate)
+    :mode ("CMakeLists.txt" ".cmake")
     :hook (cmake-mode . (lambda ()
-                          (cmake-font-lock-activate)
-                          (font-lock-add-keywords
-                           nil '(("\\<\\(FIXME\\|TODO\\|BUG\\|DONE\\)"
-                                  1 font-lock-warning-face t)))
-                          ))
-    )
-)
+                          (add-to-list 'company-backends 'company-cmake)))
+    :config
+    (use-package cmake-font-lock
+      :ensure t
+      :defer t
+      :commands (cmake-font-lock-activate)
+      :hook (cmake-mode . (lambda ()
+                            (cmake-font-lock-activate)
+                            (font-lock-add-keywords
+                             nil '(("\\<\\(FIXME\\|TODO\\|BUG\\|DONE\\)"
+                                    1 font-lock-warning-face t)))
+                            ))
+      )
+  )
 #+END_SRC
 
 **** C-ide
@@ -1729,46 +1729,46 @@ Source: https://stackoverflow.com/questions/1367747/how-do-i-install-a-matlab-mo
 Source: https://github.com/patrickt/emacs/blob/master/init.el
 https://sritchie.github.io/2011/09/25/haskell-in-emacs/
 #+BEGIN_SRC emacs-lisp
-  ;; Common Haskell snippets. These take a while to load, so no need to block on startup.
-  (use-package haskell-snippets
-    :ensure t)
+    ;; Common Haskell snippets. These take a while to load, so no need to block on startup.
+    (use-package haskell-snippets
+      :ensure t)
 
-  ;; Haskell is my programming language of choice.
-  (use-package haskell-mode
-    :ensure t
-    :config
-    (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+    ;; Haskell is my programming language of choice.
+    (use-package haskell-mode
+      :ensure t
+      :config
+      (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 
-    ;; hslint on the command line only likes this indentation mode;
-    ;; alternatives commented out below.
-    (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-    ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-    ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+      ;; hslint on the command line only likes this indentation mode;
+      ;; alternatives commented out below.
+      (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+      ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+      ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
-    ;; Ignore compiled Haskell files in filename completions
-    (add-to-list 'completion-ignored-extensions ".hi")
+      ;; Ignore compiled Haskell files in filename completions
+      (add-to-list 'completion-ignored-extensions ".hi")
 
-    ;; I don't go overboard with the symbols but they can be nice.
-    (setq haskell-font-lock-symbols 't
-          haskell-font-lock-symbols-alist
-          '(("\\" . "λ")
-            ("<=" . "≤")
-            (">=" . "≥")
-            ("==" . "≡")
-            ;; ("<>" . "♢")
-            ("/=" . "≢")
-            ;; ("<+>" . "⍚")
-            ("undefined" . "⊥")
-            ("forall" . "∀")
-            ("." "∘" haskell-font-lock-dot-is-not-composition) ; or '◦'
-            ))
+      ;; I don't go overboard with the symbols but they can be nice.
+      (setq haskell-font-lock-symbols 't
+            haskell-font-lock-symbols-alist
+            '(("\\" . "λ")
+              ("<=" . "≤")
+              (">=" . "≥")
+              ("==" . "≡")
+              ;; ("<>" . "♢")
+              ("/=" . "≢")
+              ;; ("<+>" . "⍚")
+              ("undefined" . "⊥")
+              ("forall" . "∀")
+              ("." "∘" haskell-font-lock-dot-is-not-composition) ; or '◦'
+              ))
 
-    :mode ("\\.hs$" . haskell-mode)
-    :hook (haskell-mode . my-haskell-mode-hook)
-    )
+      :mode ("\\.hs$" . haskell-mode)
+      :hook (haskell-mode . my-haskell-mode-hook)
+      )
 
-(add-hook 'haskell-mode-hook 'haskell-indent-mode)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+  (add-hook 'haskell-mode-hook 'haskell-indent-mode)
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 #+END_SRC
 
 * Git
