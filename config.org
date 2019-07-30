@@ -491,12 +491,12 @@ https://github.com/kandread/doom-emacs-private/blob/master/%2Bgtd.el
         (quote ((sequence "TODO(t!)" "IN-PROGRESS(p!)" "|" "DONE(d!)")
                 (sequence "WAITING(w@/!)" "|" "SOMEDAY(o!)" "CANCELLED(c@/!)"))))
   (setq org-todo-keyword-faces
-        (quote (("TODO" :foreground "#cc6666" :weight bold)
-                ("IN-PROGRESS" :foreground "#88bbbb" :weight bold)
-                ("DONE" :foreground "#bbbb66" :weight bold)
-                ("WAITING" :foreground "#dd9955" :weight bold)
+        (quote (("TODO" :foreground "#ee6666" :weight bold)
+                ("IN-PROGRESS" :foreground "#88bbcc" :weight bold)
+                ("DONE" :foreground "#bbdd66" :weight bold)
+                ("WAITING" :foreground "#eeee00" :weight bold)
                 ("SOMEDAY" :foreground "#bb99bb" :weight bold)
-                ("CANCELLED" :foreground "#ffcc77" :weight bold))))
+                ("CANCELLED" :foreground "#ff9922" :weight bold))))
   ;; trigger task states
   (setq org-todo-state-tags-triggers
         (quote (("CANCELLED" ("CANCELLED" . t))
