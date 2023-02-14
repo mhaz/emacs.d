@@ -236,6 +236,13 @@ Increase the kill ring size, default is 60.
     :ensure t
     :init (dired-async-mode 1))
 #+end_src
+
+* Denote
+#+begin_src emacs-lisp
+  (use-package denote
+    :ensure t)
+#+end_src
+
 * Git
 ** Magit
 Source: https://qiita.com/ignorant/items/86d353e3ada299f12836
