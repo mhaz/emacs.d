@@ -196,3 +196,28 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
     :bind ("C-=" . er/expand-region))
 #+end_src
 
+* Git
+** Magit
+Source: https://qiita.com/ignorant/items/86d353e3ada299f12836
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :defer t
+    :init
+    :bind ("C-x g" . magit-status))
+#+end_src
+
+** git gutter
+#+begin_src emacs-lisp
+  (use-package git-gutter
+    :ensure t
+    :config
+    (global-git-gutter-mode 't))
+#+end_src
+
+** git time machine
+#+begin_src emacs-lisp
+  (use-package git-timemachine
+    :ensure t)
+#+end_src
+.
