@@ -154,3 +154,45 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
   (setq backup-directory-alist
         `(("." . ,(concat user-emacs-directory "backups"))))
 #+end_src
+
+* Convenient packages
+
+** which-key
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode))
+#+end_src
+
+** Editing with sudo
+#+begin_src emacs-lisp
+  (use-package sudo-edit
+    :ensure t
+    :bind
+    ("s-e" . sudo-edit))
+#+end_src
+
+** Rainbow delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+end_src
+
+** Rainbow
+#+begin_src emacs-lisp
+  (use-package rainbow-mode
+    :ensure t
+    :init
+    (add-hook 'prog-mode-hook 'rainbow-mode))
+#+end_src
+
+** Expand region
+#+begin_src emacs-lisp
+  (use-package expand-region
+    :ensure t
+    :bind ("C-=" . er/expand-region))
+#+end_src
+
