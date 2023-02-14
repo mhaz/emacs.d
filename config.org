@@ -285,6 +285,57 @@ Logging
     :bind ("C-=" . er/expand-region))
 #+end_src
 
+* Langtool
+https://www.languagetool.org/
+https://github.com/mhayashi1120/Emacs-langtool
+#+begin_quote
+Install LanguageTool version 3.0 or later (and java) http://www.languagetool.org/
+#+end_quote
+
+sudo pacman -S jdk-openjdk
+sudo pacman -S languagetool
+#+begin_src emacs-lisp
+  ;;   (setq langtool-language-tool-jar "~/.local/share/LanguageTool-4.4/languagetool-commandline.jar")
+  ;;   (require 'langtool)
+#+end_src
+
+#+begin_quote
+Alternatively, you can set the classpath where LanguageTool's jars reside
+#+end_quote
+This may be better practice than using the file I manually downloaded and extracted?
+
+Inspired from https://github.com/gicmo/dot-emacs/blob/master/init.el
+
+#+begin_src emacs-lisp
+  (use-package langtool
+    :ensure t
+    :bind (("C-x c w" . langtool-check)
+           ("C-x c W" . langtool-check-done)
+           ("C-x c l" . langtool-switch-default-language)
+           ("C-x c 4" . langtool-show-message-at-point)
+           ("C-x c c" . langtool-correct-buffer))
+    :config
+    (setq ;langtool-language-tool-jar (car (ck-find-langtool))
+     langtool-java-classpath
+     "/usr/share/languagetool:/usr/share/java/languagetool/*"
+     langtool-default-language "en-US"
+     langtool-disabled-rules '("WHITESPACE_RULE"
+                               "EN_UNPAIRED_BRACKETS"
+                               "COMMA_PARENTHESIS_WHITESPACE"
+                               "EN_QUOTES")))
+
+  ;;report by popup
+  ;; (defun langtool-autoshow-detail-popup (overlays)
+  ;;   (when (require 'popup nil t)
+  ;;     ;; Do not interrupt current popup
+  ;;     (unless (or popup-instances
+  ;;                 ;; suppress popup after type `C-g` .
+  ;;                 (memq last-command '(keyboard-quit)))
+  ;;       (let ((msg (langtool-details-error-message overlays)))
+  ;;         (popup-tip msg)))))
+  ;; (setq langtool-autoshow-message-function
+  ;;       'langtool-autoshow-detail-popup)
+#+end_src
 
 * Git
 ** Magit
