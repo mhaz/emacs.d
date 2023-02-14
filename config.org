@@ -219,6 +219,41 @@ Increase the kill ring size, default is 60.
     :bind ("C-=" . er/expand-region))
 #+end_src
 
+* Org Mode
+** Conventional keybindings
+#+BEGIN_SRC emacs-lisp
+  (require 'org)
+  (define-key global-map "\C-c l" 'org-store-link)
+  (define-key global-map "\C-c a" 'org-agenda)
+  (setq org-log-done t)
+  (global-set-key (kbd "C-c '") 'org-edit-src-code)
+#+END_SRC
+
+** Common settings
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-export-with-smart-quotes t)
+  (setq org-src-window-setup 'current-window)
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (setq org-hide-emphasis-markers t)
+#+END_SRC
+
+** Line wrapping
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook
+            '(lambda ()
+               (visual-line-mode 1)))
+#+END_SRC
+
+** Todo keywords and triggers
+Logging
+#+BEGIN_SRC emacs-lisp
+  (setq org-log-into-drawer t)
+  (setq org-log-done 'time)
+#+END_SRC
+
 * Dired
 ** Make dired file sizes human readable.
 #+begin_src emacs-lisp
