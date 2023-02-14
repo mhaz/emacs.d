@@ -219,6 +219,23 @@ Increase the kill ring size, default is 60.
     :bind ("C-=" . er/expand-region))
 #+end_src
 
+* Dired
+** Make dired file sizes human readable.
+#+begin_src emacs-lisp
+  (setq dired-listing-switches "-alh")
+#+end_src
+
+** Move to trash
+#+begin_src emacs-lisp
+  (setq dired-move-to-trash t)
+#+end_src
+
+** Async
+#+begin_src emacs-lisp
+  (use-package async
+    :ensure t
+    :init (dired-async-mode 1))
+#+end_src
 * Git
 ** Magit
 Source: https://qiita.com/ignorant/items/86d353e3ada299f12836
