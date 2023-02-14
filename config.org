@@ -278,6 +278,14 @@ Logging
     :ensure t)
 #+end_src
 
+* Editing / Text manipulation
+#+begin_src emacs-lisp
+  (use-package expand-region
+    :ensure t
+    :bind ("C-=" . er/expand-region))
+#+end_src
+
+
 * Git
 ** Magit
 Source: https://qiita.com/ignorant/items/86d353e3ada299f12836

@@ -52,3 +52,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End of my init.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("b087e899547595133d03ef3b130270f725432d0eefe0022a33c5f896eef4efc3" "95415f46fd1f9f3ef5f8a6a1da82ff06e65b22b5f105737b5677e6081ebff0ec" "e57706598812efad84c80a58607f17016a3c9788db6dcb9f46b367dab52662ba" "e5dc5b39fecbeeb027c13e8bfbf57a865be6e0ed703ac1ffa96476b62d1fae84" default))
+ '(inhibit-startup-screen t)
+ '(org-agenda-files nil)
+ '(package-selected-packages
+   '(denote geiser-guile langtool try git-timemachine git-gutter magit expand-region rainbow-mode rainbow-delimiters sudo-edit which-key use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
