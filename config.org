@@ -27,7 +27,6 @@ TODO: Change the color of the code blocks in Org Mode.
 
     (set-face-attribute 'fixed-pitch nil
                         :family "Iosevka"
-                        :height 110
                         :weight 'regular
                         :width 'normal)
   #+end_src
