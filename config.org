@@ -161,6 +161,65 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
         `(("." . ,(concat user-emacs-directory "backups"))))
 #+end_src
 
+** Interface customization
+*** Progressive half screen scroll
+#+begin_src emacs-lisp
+  (defun count-visible-lines ()
+    (- (count-lines (window-start) (window-end))
+       (if (eq (point-at-eol) (window-end))
+           0
+         1)))
+
+  (defun scroll-down-half ()
+    (interactive)
+    (scroll-down (/ (count-visible-lines) 2)))
+
+  (defun scroll-up-half ()
+    (interactive)
+    (scroll-up (/ (count-visible-lines) 2)))
+
+  (defun scroll-up-progressive-n (n)
+    (dotimes (i n)
+      (progn
+        (scroll-up 1)
+        (sit-for (min 0.05 (/ 1.0 n))))))
+  ;; (cond ((eq n 0) nil)
+  ;;       ((eq n 1) (scroll-up 1))
+  ;;       (t (progn
+  ;;            (scroll-up 1)
+  ;;            (sit-for 0.05)
+  ;;            (scroll-up-progressive-n (1- n))))))
+
+  (defun scroll-up-half-progressive ()
+    (interactive)
+    (scroll-up-progressive-n (/ (count-visible-lines) 2)))
+
+  ;; (defun scroll-down-progressive-n (n)
+  ;;   (cond ((eq n 0) nil)
+  ;;         (t (progn
+  ;;              (scroll-down 1)
+  ;;              (sit-for 0.05)
+  ;;              (scroll-down-progressive-n (1- n))))))
+
+  (defun scroll-down-progressive-n (n)
+    (dotimes (i n)
+      (progn
+        (scroll-down 1)
+        (sit-for (min 0.05 (/ 1.0 n))))))
+
+
+  (defun scroll-down-half-progressive ()
+    (interactive)
+    (scroll-down-progressive-n (/ (count-visible-lines) 2)))
+
+  ;; Scroll up / down half a screen instead of an entire one.
+  ;; (global-set-key (kbd "C-v") 'scroll-up-half)
+  ;; (global-set-key (kbd "M-v") 'scroll-down-half)
+
+  ;;; BUG -> doesn't play well in org mode
+  (global-set-key (kbd "C-v") 'scroll-up-half-progressive)
+  (global-set-key (kbd "M-v") 'scroll-down-half-progressive)
+#+end_src
 * Convenient packages
 ** Undo
 Increase the kill ring size, default is 60.
