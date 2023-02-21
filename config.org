@@ -85,6 +85,7 @@ Delete selected text when I start typing over it (default behavior in most GUIs)
 ** Show parens
 #+begin_src emacs-lisp
   (show-paren-mode 1)
+  (setq show-paren-style 'expression)
 #+end_src
 
 ** Delete trailing whitespaces on save
