@@ -204,6 +204,25 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
   (global-set-key (kbd "C-v") 'scroll-up-half-progressive)
   (global-set-key (kbd "M-v") 'scroll-down-half-progressive)
 #+end_src
+
+*** Bouncing beginning of line / indentation
+#+begin_src emacs-lisp
+  (defun beginning-of-line-p ()
+    (let ((cur-point (point)))
+      (save-excursion
+        (progn
+          (beginning-of-line)
+          (eq cur-point (point))))))
+
+  (defun beginning-of-line-or-indentation ()
+    (interactive)
+    (if (beginning-of-line-p)
+        (back-to-indentation)
+      (beginning-of-line)))
+
+  (global-set-key (kbd "C-a") 'beginning-of-line-or-indentation)
+#+end_src
+
 * Convenient packages
 ** Undo
 Increase the kill ring size, default is 60.
