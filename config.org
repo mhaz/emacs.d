@@ -291,6 +291,43 @@ Logging
     :bind ("C-=" . er/expand-region))
 #+end_src
 
+* Haskell
+#+begin_src emacs-lisp
+  (use-package haskell-mode
+    :ensure t
+    :config
+    (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+    ;; hslint on the command line only likes this indentation mode;
+    ;; alternatives commented out below.
+    (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+    ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+    ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+    ;; Ignore compiled Haskell files in filename completions
+    (add-to-list 'completion-ignored-extensions ".hi")
+
+    ;; I don't go overboard with the symbols but they can be nice.
+    (setq haskell-font-lock-symbols 't
+          haskell-font-lock-symbols-alist
+          '(("\\" . "λ")
+            ("<=" . "≤")
+            (">=" . "≥")
+            ("==" . "≡")
+            ;; ("<>" . "♢")
+            ("/=" . "≢")
+            ;; ("<+>" . "⍚")
+            ("undefined" . "⊥")
+            ("forall" . "∀")
+            ("." "∘" haskell-font-lock-dot-is-not-composition) ; or '◦'
+            ))
+
+    :mode ("\\.hs$" . haskell-mode)
+    :hook (haskell-mode . my-haskell-mode-hook))
+
+  (add-hook 'haskell-mode-hook 'haskell-indent-mode)
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+#+end_src
+
 * Langtool
 https://www.languagetool.org/
 https://github.com/mhayashi1120/Emacs-langtool
