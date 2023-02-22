@@ -162,6 +162,10 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
 #+end_src
 
 ** Interface customization
+*** Display line number on programming modes
+#+begin_src emacs-lisp
+(add-hook 'prog-mode-hook 'linum-mode)
+#+end_src
 *** Progressive half screen scroll
 #+begin_src emacs-lisp
   (defun count-visible-lines ()
