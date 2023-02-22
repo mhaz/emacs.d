@@ -345,13 +345,6 @@ Logging
     :ensure t)
 #+end_src
 
-* Editing / Text manipulation
-#+begin_src emacs-lisp
-  (use-package expand-region
-    :ensure t
-    :bind ("C-=" . er/expand-region))
-#+end_src
-
 * Haskell
 #+begin_src emacs-lisp
   (use-package haskell-mode
