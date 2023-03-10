@@ -372,22 +372,53 @@ Logging
     (add-to-list 'completion-ignored-extensions ".hi")
 
     ;; I don't go overboard with the symbols but they can be nice.
+    ;; (setq haskell-font-lock-symbols 't
+    ;;       haskell-font-lock-symbols-alist
+    ;;       '(("\\" . "λ")
+    ;;         ("<=" . "≤")
+    ;;         (">=" . "≥")
+    ;;         ("==" . "≡")
+    ;;         ;; ("<>" . "♢")
+    ;;         ("/=" . "≢")
+    ;;         ;; ("<+>" . "⍚")
+    ;;         ("undefined" . "⊥")
+    ;;         ("forall" . "∀")
+    ;;         ("." "∘" haskell-font-lock-dot-is-not-composition) ; or '◦'
+    ;;         ))
+
     (setq haskell-font-lock-symbols 't
           haskell-font-lock-symbols-alist
-          '(("\\" . "λ")
-            ("<=" . "≤")
-            (">=" . "≥")
-            ("==" . "≡")
-            ;; ("<>" . "♢")
-            ("/=" . "≢")
-            ;; ("<+>" . "⍚")
-            ("undefined" . "⊥")
-            ("forall" . "∀")
-            ("." "∘" haskell-font-lock-dot-is-not-composition) ; or '◦'
-            ))
+  '(("\\" . "λ")
+    ("not" . "¬")
+    ("->" . "→")
+    ("<-" . "←")
+    ("=>" . "⇒")
+    ("()" . "∅")
+    ("==" . "≡")
+    ("/=" . "≢")
+    (">=" . "≥")
+    ("<=" . "≤")
+    ("!!" . "‼")
+    ("&&" . "∧")
+    ("||" . "∨")
+    ("sqrt" . "√")
+    ("undefined" . "⊥")
+    ("pi" . "π")
+    ("~>" . "⇝") ;; Omega language
+    ;; ("~>" "↝") ;; less desirable
+    ("-<" . "↢") ;; Paterson's arrow syntax
+    ;; ("-<" "⤙") ;; nicer but uncommon
+    ("::" . "∷")
+    ("." "∘" ; "○"
+     ;; Need a predicate here to distinguish the . used by
+     ;; forall <foo> . <bar>.
+     haskell-font-lock-dot-is-not-composition)
+    ("forall" . "∀")))
+
 
     :mode ("\\.hs$" . haskell-mode)
-    :hook (haskell-mode . my-haskell-mode-hook))
+    ;; :hook (haskell-mode . my-haskell-mode-hook)
+    )
 
   (add-hook 'haskell-mode-hook 'haskell-indent-mode)
   (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
