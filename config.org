@@ -164,7 +164,8 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
 ** Interface customization
 *** Display line number on programming modes
 #+begin_src emacs-lisp
-(add-hook 'prog-mode-hook 'linum-mode)
+  ;; (add-hook 'prog-mode-hook 'linum-mode)
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 #+end_src
 *** Progressive half screen scroll
 #+begin_src emacs-lisp
