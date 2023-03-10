@@ -211,6 +211,11 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
 
 *** Bouncing beginning of line / indentation
 #+begin_src emacs-lisp
+  (defun smart-beginning-of-line ()
+    (cond ((eq major-mode 'org-mode)
+          (org-beginning-of-line))
+          (t (beginning-of-line))))
+
   (defun beginning-of-line-p ()
     (let ((cur-point (point)))
       (save-excursion
@@ -222,7 +227,8 @@ Source: https://www.emacswiki.org/emacs/AutoSave#toc1
     (interactive)
     (if (beginning-of-line-p)
         (back-to-indentation)
-      (beginning-of-line)))
+      ;; (beginning-of-line)
+      (smart-beginning-of-line)))
 
   (global-set-key (kbd "C-a") 'beginning-of-line-or-indentation)
 #+end_src
